@@ -1,0 +1,7 @@
+name = "mirror-webhook"
+main = "worker.js"
+compatibility_date = "2025-01-01"
+
+[vars]
+HUB_REPO = "bhawan-kavinda/mirror-hub"
+HUB_REF = "main"
