@@ -1,0 +1,124 @@
+name: clone
+
+# Mirror-Repo (public) එකේ manual run කරනවා.
+# private mirror-hub එක clone කරලා අලුත් commit තියෙනවා නම්,
+# commit message විස්තර එක්ක dev branch එකට PR එකක් open කරනවා.
+
+on:
+  workflow_dispatch:
+    inputs:
+      base_branch:
+        description: "PR එක යන්න ඕනි branch එක"
+        required: false
+        default: "dev"
+
+concurrency:
+  group: clone-from-hub
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  SOURCE_REPO: git@github.com:bhawan-kavinda/mirror-hub.git
+  # public එකට copy කරන්න එපා කියන ඒවා (rsync patterns)
+  EXCLUDES: ".git .github .upstream-sha"
+
+jobs:
+  clone:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.base_branch }}
+
+      - name: Set up SSH access to mirror-hub
+        env:
+          SSH_KEY: ${{ secrets.MIRROR_HUB_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh && chmod 700 ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/hub_key
+          chmod 600 ~/.ssh/hub_key
+          ssh-keyscan -t ed25519,rsa github.com >> ~/.ssh/known_hosts
+          echo "GIT_SSH_COMMAND=ssh -i $HOME/.ssh/hub_key -o IdentitiesOnly=yes" >> "$GITHUB_ENV"
+
+      - name: Clone mirror-hub
+        run: git clone "$SOURCE_REPO" "$RUNNER_TEMP/source"
+
+      - name: Copy changes and open PR
+        env:
+          GH_TOKEN: ${{ github.token }}
+          BASE_BRANCH: ${{ inputs.base_branch }}
+        run: |
+          set -euo pipefail
+          SRC="$RUNNER_TEMP/source"
+          NEW_SHA=$(git -C "$SRC" rev-parse HEAD)
+          SHORT=$(git -C "$SRC" rev-parse --short=7 HEAD)
+          OLD_SHA=""
+          [ -f .upstream-sha ] && OLD_SHA=$(tr -d '[:space:]' < .upstream-sha)
+
+          if [ "$OLD_SHA" = "$NEW_SHA" ]; then
+            echo "අලුත් commit නැහැ ($SHORT). PR එකක් අවශ්‍ය නැහැ."
+            exit 0
+          fi
+
+          BRANCH="sync/$SHORT"
+          if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
+            echo "Branch $BRANCH කලින්ම තියෙනවා - PR එක කලින් දාලා."
+            exit 0
+          fi
+
+          # අලුත් commits පරාසය
+          if [ -n "$OLD_SHA" ] && git -C "$SRC" cat-file -e "$OLD_SHA^{commit}" 2>/dev/null; then
+            RANGE="$OLD_SHA..$NEW_SHA"
+            FROM="${OLD_SHA:0:7}"
+          else
+            RANGE="$NEW_SHA"
+            FROM="start"
+          fi
+          COUNT=$(git -C "$SRC" rev-list --no-merges --count "$RANGE")
+          [ "$COUNT" -gt 50 ] && SHOWN=50 || SHOWN=$COUNT
+          LATEST=$(git -C "$SRC" log -1 --format='%s')
+
+          # PR body: commit එකක් එකක් ගානේ message + description
+          {
+            echo "mirror-hub එකෙන් ආපු අලුත් updates (automated)."
+            echo
+            echo "**Range:** \`$FROM..$SHORT\`  "
+            echo "**Commits:** $COUNT (අලුත්ම $SHOWN පෙන්වනවා)"
+            echo
+            echo "## Commits"
+            git -C "$SRC" log --no-merges -n 50 --reverse --date=short \
+              --format='### `%h` %s%n_%an · %ad_%n%n%b' "$RANGE"
+          } | head -c 60000 > "$RUNNER_TEMP/body.md"
+
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+
+          EXC=()
+          for p in $EXCLUDES; do EXC+=(--exclude "$p"); done
+          rsync -a --delete "${EXC[@]}" "$SRC"/ ./
+          echo "$NEW_SHA" > .upstream-sha
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "File වෙනසක් නැහැ - PR එකක් අවශ්‍ය නැහැ."
+            exit 0
+          fi
+
+          {
+            echo "sync: $COUNT new commit(s) from mirror-hub @ $SHORT"
+            echo
+            git -C "$SRC" log --no-merges -n 50 --reverse --format='- %s' "$RANGE"
+          } > "$RUNNER_TEMP/commit.txt"
+          git commit -F "$RUNNER_TEMP/commit.txt"
+          git push origin "$BRANCH"
+
+          gh pr create \
+            --base "$BASE_BRANCH" \
+            --head "$BRANCH" \
+            --title "sync: $LATEST (+$((COUNT-1)) more) @ $SHORT" \
+            --body-file "$RUNNER_TEMP/body.md"
