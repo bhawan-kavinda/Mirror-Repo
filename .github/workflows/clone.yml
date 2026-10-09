@@ -1,14 +1,14 @@
 name: clone
 
-# Mirror-Repo (public) එකේ manual run කරනවා.
-# private mirror-hub එක clone කරලා අලුත් commit තියෙනවා නම්,
-# commit message විස්තර එක්ක dev branch එකට PR එකක් open කරනවා.
+# Run manually in Mirror-Repo (public).
+# Clones the private mirror-hub repo and, if there are new commits,
+# opens a PR to the dev branch with detailed commit messages.
 
 on:
   workflow_dispatch:
     inputs:
       base_branch:
-        description: "PR එක යන්න ඕනි branch එක"
+        description: "Branch the PR should target"
         required: false
         default: "dev"
 
@@ -22,7 +22,7 @@ permissions:
 
 env:
   SOURCE_REPO: git@github.com:bhawan-kavinda/mirror-hub.git
-  # public එකට copy කරන්න එපා කියන ඒවා (rsync patterns)
+  # Files/folders NOT copied into the public repo (rsync patterns)
   EXCLUDES: ".git .github .upstream-sha"
 
 jobs:
@@ -60,17 +60,17 @@ jobs:
           [ -f .upstream-sha ] && OLD_SHA=$(tr -d '[:space:]' < .upstream-sha)
 
           if [ "$OLD_SHA" = "$NEW_SHA" ]; then
-            echo "අලුත් commit නැහැ ($SHORT). PR එකක් අවශ්‍ය නැහැ."
+            echo "No new commits ($SHORT). No PR needed."
             exit 0
           fi
 
           BRANCH="sync/$SHORT"
           if git ls-remote --exit-code --heads origin "$BRANCH" >/dev/null 2>&1; then
-            echo "Branch $BRANCH කලින්ම තියෙනවා - PR එක කලින් දාලා."
+            echo "Branch $BRANCH already exists - PR was already opened."
             exit 0
           fi
 
-          # අලුත් commits පරාසය
+          # Range of new commits
           if [ -n "$OLD_SHA" ] && git -C "$SRC" cat-file -e "$OLD_SHA^{commit}" 2>/dev/null; then
             RANGE="$OLD_SHA..$NEW_SHA"
             FROM="${OLD_SHA:0:7}"
@@ -82,12 +82,12 @@ jobs:
           [ "$COUNT" -gt 50 ] && SHOWN=50 || SHOWN=$COUNT
           LATEST=$(git -C "$SRC" log -1 --format='%s')
 
-          # PR body: commit එකක් එකක් ගානේ message + description
+          # PR body: one entry per commit with message + description
           {
-            echo "mirror-hub එකෙන් ආපු අලුත් updates (automated)."
+            echo "New updates from mirror-hub (automated)."
             echo
             echo "**Range:** \`$FROM..$SHORT\`  "
-            echo "**Commits:** $COUNT (අලුත්ම $SHOWN පෙන්වනවා)"
+            echo "**Commits:** $COUNT (showing latest $SHOWN)"
             echo
             echo "## Commits"
             git -C "$SRC" log --no-merges -n 50 --reverse --date=short \
@@ -105,7 +105,7 @@ jobs:
 
           git add -A
           if git diff --cached --quiet; then
-            echo "File වෙනසක් නැහැ - PR එකක් අවශ්‍ය නැහැ."
+            echo "No file changes - no PR needed."
             exit 0
           fi
 
