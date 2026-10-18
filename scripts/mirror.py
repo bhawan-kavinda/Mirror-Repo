@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """GitHub -> GitLab mirror. Stdlib + git only.
 
-TARGET_REPO set   -> mirror just that "owner/repo" (webhook-triggered)
+TARGET_REPO set   -> mirror just that "owner/repo" (manual run)
 TARGET_REPO empty -> full reconcile of every repo the GH_PAT can see
+
+Only repos marked [x] in repos.md are mirrored (kept up to date by the setup workflow).
 """
 import base64
 import json
@@ -143,7 +145,7 @@ def ls_remote(url, cfg):
     return refs
 
 
-# ------------------------------------------------------- white / black lists
+# ------------------------------------------------------------ repo selection
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
@@ -172,41 +174,25 @@ def load_json(name):
         sys.exit(f"{name}: invalid JSON ({e})")
 
 
-def repo_set(data, name):
-    if data is None:
-        return set()
-    items = data.get("repos", []) if isinstance(data, dict) else data
-    if not isinstance(items, list):
-        sys.exit(f"{name}: 'repos' must be a list")
-    return {norm_repo(x) for x in items if isinstance(x, str) and x.strip()}
+SELECT_LINE = re.compile(r"^\s*[-*]\s*\[([ xX])\]\s+(\S+)")
 
 
-def is_on(v):
-    if isinstance(v, bool):
-        return v
-    return str(v).strip().lower() in ("on", "true", "yes", "1")
-
-
-def apply_lists(repos):
-    """white-list.json (only_white_list = on) wins over everything.
-    Otherwise black-list.json repos are skipped. Missing/empty files = no filter."""
-    wl = load_json("white-list.json")
-    if isinstance(wl, dict) and is_on(wl.get("only_white_list")):
-        allow = repo_set(wl, "white-list.json")
-        print(f"white-list: ON - only {len(allow)} listed repo(s) will be mirrored (black-list ignored)")
-        if not allow:
-            print("white-list: list is empty, nothing will be mirrored")
-        return [r for r in repos if r["full_name"].lower() in allow]
-
-    deny = repo_set(load_json("black-list.json"), "black-list.json")
-    if not deny:
-        return repos
-    kept = []
-    for r in repos:
-        if r["full_name"].lower() in deny:
-            print(f"black-list: skipping {r['full_name']}")
-        else:
-            kept.append(r)
+def apply_selection(repos):
+    """repos.md (created by setup.yml): only '[x]' repos are mirrored.
+    Unchecked and unlisted repos are skipped; a repo listed both ways stays skipped.
+    Missing file = stop, so nothing is mirrored before the setup PR is merged."""
+    path = os.path.join(ROOT, "repos.md")
+    if not os.path.isfile(path):
+        sys.exit("repos.md not found - run the 'setup' workflow and merge its PR first")
+    allow, deny = set(), set()
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            m = SELECT_LINE.match(line)
+            if m:
+                (allow if m.group(1) in ("x", "X") else deny).add(norm_repo(m.group(2)))
+    allow -= deny
+    kept = [r for r in repos if r["full_name"].lower() in allow]
+    print(f"repos.md: {len(allow)} selected, {len(repos) - len(kept)} not selected (unchecked or not listed)")
     return kept
 
 
@@ -298,7 +284,7 @@ def sync(r):
 
     if src == dst:
         set_default(p, r, src)
-        return "skipped"
+        return "up-to-date"  # GitLab already has exactly the same branches and tags
 
     unprotect(p["id"])
     with tempfile.TemporaryDirectory() as d:
@@ -332,8 +318,12 @@ def run_one(r):
     full = r["full_name"]
     for attempt in (1, 2):
         try:
-            return full, sync(r), ""
+            print(f"start    {full} (attempt {attempt})", flush=True)
+            status = sync(r)
+            print(f"done     {full}: {status}", flush=True)
+            return full, status, ""
         except Exception as e:  # noqa: BLE001
+            print(f"error    {full} (attempt {attempt}): {scrub(e)[-200:]}", flush=True)
             if attempt == 2:
                 return full, "failed", scrub(e)
             time.sleep(5)
@@ -380,7 +370,7 @@ def main():
     else:
         repos = list_repos()
 
-    repos = apply_lists(repos)
+    repos = apply_selection(repos)
     repos = [
         r
         for r in repos

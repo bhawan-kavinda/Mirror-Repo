@@ -1,0 +1,86 @@
+name: setup
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 * * * *" # hourly tick; timeloop.json decides which ticks actually run
+
+# needs: Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests"
+permissions:
+  contents: read
+
+concurrency:
+  group: setup
+  cancel-in-progress: false
+
+jobs:
+  setup:
+    # the public copy (Mirror-Repo) has no secrets and public logs, so it never runs this
+    if: github.repository != 'bhawan-kavinda/Mirror-Repo'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      due: ${{ steps.build.outputs.due }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      # GH_PAT is only exposed to this step; the push/PR step uses the built-in token
+      - name: Check timeloop and update repos.md
+        id: build
+        run: python3 scripts/setup.py
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+
+      - name: Open PR
+        if: steps.build.outputs.due == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE: ${{ github.ref_name }}
+        run: |
+          git add repos.md
+          if git diff --cached --quiet; then
+            echo "repos.md needs no changes - no PR"
+            exit 0
+          fi
+
+          BRANCH="setup/repos"
+          if [ -n "$(gh pr list --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            echo "A setup PR is already open - merge or close it first"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$BRANCH"
+          git commit -q -m "Update repo selection list"
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git push -q --force origin "$BRANCH"
+
+          cat > /tmp/pr-body.md <<'BODY'
+          Open `repos.md` in this PR and edit the marks:
+
+          - `[x]` = mirror this repo
+          - `[ ]` = skip this repo
+
+          New repos are added as `[x]`. Merge when done. Every mirror run reads this file.
+          BODY
+
+          gh pr create \
+            --base "$BASE" \
+            --head "$BRANCH" \
+            --title "Select repos to mirror" \
+            --body-file /tmp/pr-body.md
+
+  # runs only after setup passed and the timeloop said it is time
+  mirror:
+    needs: setup
+    if: needs.setup.outputs.due == 'true'
+    permissions:
+      contents: read
+    uses: ./.github/workflows/mirror.yml
+    secrets: inherit
