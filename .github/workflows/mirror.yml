@@ -1,0 +1,59 @@
+name: mirror
+
+on:
+  workflow_call:
+    inputs:
+      repo:
+        type: string
+        required: false
+        default: ""
+  workflow_dispatch:
+    inputs:
+      repo:
+        description: "owner/repo (leave empty for a full reconcile)"
+        required: false
+        default: ""
+
+# one run per repo at a time; a newer queued run replaces an older queued one,
+# which is fine because every run mirrors the latest state anyway
+concurrency:
+  group: mirror-${{ inputs.repo || 'full' }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  mirror:
+    # the public copy (Mirror-Repo) has no secrets and public logs, so it never runs this
+    if: github.repository != 'bhawan-kavinda/Mirror-Repo'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      # mirror only runs when repos.md exists
+      - name: Check repos.md
+        id: list
+        run: |
+          if [ -f repos.md ]; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::repos.md not found - mirror skipped. Merge the setup PR first."
+          fi
+
+      - name: Mirror
+        if: steps.list.outputs.found == 'true'
+        run: python3 scripts/mirror.py
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+          GITLAB_PAT: ${{ secrets.GITLAB_PAT }}
+          GITLAB_URL: ${{ vars.GITLAB_URL || 'https://gitlab.com' }}
+          GITLAB_GROUP: ${{ vars.GITLAB_GROUP || secrets.GITLAB_GROUP || 'bhawan-mirror' }}
+          INCLUDE_FORKS: ${{ vars.INCLUDE_FORKS || 'true' }}
+          INCLUDE_ARCHIVED: ${{ vars.INCLUDE_ARCHIVED || 'true' }}
+          TARGET_REPO: ${{ inputs.repo }}
+          PYTHONUNBUFFERED: "1" # show log lines live instead of at the end

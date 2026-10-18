@@ -1,6 +1,0 @@
-{
-  "only_white_list": "off",
-  "repos": [
-    "https://github.com/owner/repo"
-  ]
-}
