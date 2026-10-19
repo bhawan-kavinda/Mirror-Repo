@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Keep repos.md (the repo checklist) in sync with GitHub.
 
-- Scheduled runs only proceed when timeloop.json says it is time.
+- Scheduled runs only proceed when timeloop.json says it is time (fixed "at" times and/or every_hours).
 - repos.md missing -> create it with every repo the GH_PAT can see ([x] by default).
 - repos.md exists  -> add repos that are not listed yet ([x] by default).
                       If there are none, the file is left untouched (no PR needed).
@@ -16,6 +16,7 @@ import sys
 import urllib.error
 import urllib.request
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 GH_PAT = os.environ["GH_PAT"]
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -42,8 +43,20 @@ def set_output(name, value):
 
 
 # ------------------------------------------------------------------ timeloop
-def every_hours():
-    """timeloop.json -> N, or None when the file is missing or empty."""
+TIMELOOP_KEYS = {"every_hours", "at", "timezone"}
+AT_RE = re.compile(r"^([01]?\d|2[0-3]):([0-5]\d)$")
+
+
+def read_timeloop():
+    """timeloop.json -> (every_hours | None, set of 'at' hours, tzinfo, tz name).
+
+    Returns None when the file is missing or empty (= every tick is due).
+    Supported keys (at least one of every_hours / at is required):
+      every_hours : 1..24   due when the local hour is a multiple of N
+      at          : ["06:00", "18:00"]   due in those local hours (24h clock)
+      timezone    : IANA name, default "UTC" (e.g. "Asia/Colombo")
+    If both every_hours and at are set, a tick is due when either matches.
+    """
     path = os.path.join(ROOT, "timeloop.json")
     if not os.path.isfile(path):
         return None
@@ -55,23 +68,63 @@ def every_hours():
         data = json.loads(raw)
     except ValueError as e:
         sys.exit(f"timeloop.json: invalid JSON ({e})")
-    n = data.get("every_hours") if isinstance(data, dict) else None
-    if not isinstance(n, int) or isinstance(n, bool) or not 1 <= n <= 24:
+    if not isinstance(data, dict):
+        sys.exit("timeloop.json: must be a JSON object")
+
+    unknown = sorted(set(data) - TIMELOOP_KEYS)
+    if unknown:
+        sys.exit(f"timeloop.json: unknown key(s) {unknown}; allowed: {sorted(TIMELOOP_KEYS)}")
+
+    every = data.get("every_hours")
+    if every is not None and (not isinstance(every, int) or isinstance(every, bool)
+                              or not 1 <= every <= 24):
         sys.exit("timeloop.json: 'every_hours' must be a whole number from 1 to 24")
-    return n
+
+    at_hours = set()
+    at = data.get("at")
+    if at is not None:
+        if not isinstance(at, list) or not at:
+            sys.exit("timeloop.json: 'at' must be a non-empty list like [\"06:00\", \"18:00\"]")
+        for item in at:
+            m = AT_RE.match(item) if isinstance(item, str) else None
+            if not m:
+                sys.exit(f"timeloop.json: bad time {item!r} in 'at' - use 24h \"HH:MM\", e.g. \"06:00\"")
+            at_hours.add(int(m.group(1)))
+
+    if every is None and not at_hours:
+        sys.exit("timeloop.json: set 'every_hours' (e.g. 6) or 'at' (e.g. [\"06:00\", \"18:00\"])")
+
+    tz_name = data.get("timezone", "UTC")
+    if not isinstance(tz_name, str):
+        sys.exit("timeloop.json: 'timezone' must be a string like \"Asia/Colombo\"")
+    try:
+        tz = ZoneInfo(tz_name)
+    except (ZoneInfoNotFoundError, ValueError):
+        sys.exit(f"timeloop.json: unknown timezone {tz_name!r} (use an IANA name such as \"Asia/Colombo\" or \"UTC\")")
+
+    return every, at_hours, tz, tz_name
 
 
-def is_due():
-    """Scheduled runs only: due when the UTC hour is a multiple of every_hours.
-    Manual and push runs are always due. Missing file = every tick is due."""
-    if os.environ.get("GITHUB_EVENT_NAME") != "schedule":
+def is_due(now=None):
+    """Scheduled runs only. Due when the current hour (in the configured timezone)
+    is a multiple of every_hours, or is one of the 'at' hours.
+    Manual and push runs are always due. Missing file = every tick is due.
+    Only the hour matters: the run happens at the hourly tick inside that hour."""
+    if now is None and os.environ.get("GITHUB_EVENT_NAME") != "schedule":
         return True
-    n = every_hours()
-    if n is None:
+    cfg = read_timeloop()
+    if cfg is None:
         return True
-    hour = datetime.now(timezone.utc).hour
-    print(f"timeloop: every {n}h, current UTC hour is {hour}")
-    return hour % n == 0
+    every, at_hours, tz, tz_name = cfg
+    local = (now or datetime.now(timezone.utc)).astimezone(tz)
+    hour = local.hour
+    rules = []
+    if every:
+        rules.append(f"every {every}h")
+    if at_hours:
+        rules.append("at " + ", ".join(f"{h:02d}:00" for h in sorted(at_hours)))
+    print(f"timeloop: {' + '.join(rules)} ({tz_name}); local time now {local:%H:%M}, hour {hour}")
+    return bool((every and hour % every == 0) or hour in at_hours)
 
 
 # ------------------------------------------------------------------- GitHub
