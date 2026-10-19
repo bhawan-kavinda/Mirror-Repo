@@ -49,7 +49,7 @@ New repos are offered to you in a PR. No servers to run. No webhooks.
 
 - **You choose what is mirrored** — the `setup` workflow lists every repo your token can see (private, public, organizations) in a PR; you mark the ones you want, then merge.
 - **New repos are never cloned silently** — when a repo appears that is not in the list, `setup` opens a PR for it; until you merge, it is skipped.
-- **Your own schedule** — `timeloop.json` sets how many hours pass between runs.
+- **Your own schedule** — `timeloop.json` sets fixed times of day (e.g. 06:00 and 18:00 in your time zone) or the number of hours between runs.
 - **Tidy GitLab layout** — `mirror/<github-owner>/<repo>`; each owner gets its own private subgroup.
 - **True mirror** — GitLab always equals GitHub: force-pushes, deleted branches and deleted tags are replicated.
 - **Safe backup semantics** — repos deleted on GitHub are **kept** on GitLab.
@@ -137,17 +137,18 @@ Open the **Actions** tab → **setup** → **Run workflow**.
 
 From now on every mirror run reads this file.
 
-### 5. Set the sync interval
+### 5. Set the sync schedule
 
-Edit `timeloop.json` in the repo root:
+Edit `timeloop.json` in the repo root. For example, sync every morning and evening at 6 (local time):
 
 ```json
 {
-  "every_hours": 6
+  "at": ["06:00", "18:00"],
+  "timezone": "Asia/Colombo"
 }
 ```
 
-See [timeloop.json — the sync interval](#timeloopjson--the-sync-interval) for details.
+Or sync every few hours with `{ "every_hours": 6 }`. See [timeloop.json — the sync interval](#timeloopjson--the-sync-interval) for details.
 
 ### 6. Test it
 
@@ -206,26 +207,41 @@ Everything after the repo name (`| private, fork, archived`) is only a hint for 
 
 ## timeloop.json — the sync interval
 
+Choose **one** of two styles (or use both together).
+
+**A) Fixed times of day** — e.g. every morning and evening at 6:
+
+```json
+{
+  "at": ["06:00", "18:00"],
+  "timezone": "Asia/Colombo"
+}
+```
+
+**B) Every N hours:**
+
 ```json
 {
   "every_hours": 6
 }
 ```
 
-The `setup` workflow ticks every hour (cron `17 * * * *`). On each scheduled tick, `setup.py` continues **only if the current UTC hour is a multiple of `every_hours`**; otherwise everything stops. When it continues, it checks `repos.md` and then the `mirror` workflow runs.
+The `setup` workflow ticks every hour (cron `17 * * * *`). On each scheduled tick, `setup.py` converts the current time to `timezone` and continues **only if this hour is due**; otherwise everything stops. When it continues, it checks `repos.md` and then the `mirror` workflow runs.
 
-| `every_hours` | Mirrors at (UTC hours) |
+| Key | Meaning |
 |---|---|
-| `1` | every hour |
-| `6` | 00, 06, 12, 18 |
-| `12` | 00, 12 |
-| `24` | 00 |
+| `at` | List of 24-hour times, e.g. `["06:00", "18:00"]`. A tick is due when its local hour is one of them. |
+| `every_hours` | Whole number `1`–`24`. A tick is due when its local hour is a multiple of N. |
+| `timezone` | IANA time-zone name, e.g. `Asia/Colombo`, `Europe/London`. Default `UTC`. Applies to both `at` and `every_hours`. |
 
-- Allowed values: whole numbers from `1` to `24`. Anything else stops the run with an error.
-- Values that divide 24 evenly (`1, 2, 3, 4, 6, 8, 12, 24`) give an even rhythm. Other values (for example `5`) give uneven gaps at midnight.
-- If `timeloop.json` is missing, every hourly tick mirrors.
+- At least one of `at` / `every_hours` is required. If both are set, a tick is due when **either** matches.
+- Only the **hour** of an `at` time is used. The run starts at the hourly tick inside that hour, so `"06:00"` actually syncs at about **06:17–06:50** local time.
+- Examples (`timezone` = `UTC`, `every_hours`): `1` = every hour · `6` = 00, 06, 12, 18 · `12` = 00, 12 · `24` = 00.
+- `every_hours` values that divide 24 evenly (`1, 2, 3, 4, 6, 8, 12, 24`) give an even rhythm. Other values (for example `5`) give uneven gaps at midnight.
+- Unknown keys, bad times (`"6am"`, `"25:00"`) or an unknown timezone stop the run with a clear error.
+- If `timeloop.json` is missing or empty, every hourly tick mirrors.
 - Manual runs of `setup` and `mirror` ignore this file.
-- GitHub can delay scheduled runs under load. If a tick is delayed past the end of its hour, that run is skipped and the next one happens after `every_hours` more hours.
+- GitHub can delay (or occasionally drop) scheduled runs under load. If a tick is delayed past the end of its hour, that run is skipped and the next due hour is used. Use **Run workflow** on `mirror` for an immediate sync. If you want more safety, list more hours (for example `["06:00", "07:00", "18:00", "19:00"]`) so a missed tick gets a second chance.
 
 ## Behaviour notes
 
@@ -301,10 +317,10 @@ python3 scripts/setup.py                        # create repos.md / add new repo
 | `setup`: `GitHub Actions is not permitted to create or approve pull requests` | Tick **Allow GitHub Actions to create and approve pull requests** in Settings → Actions → General. The pushed branch already exists, so you can also open the PR from the link in the log. |
 | `setup`: no PR was opened | Either every repo is already listed in `repos.md`, or a setup PR is already open (merge or close it first). |
 | `mirror` skipped with "repos.md not found" | Normal until you **merge** the first setup PR. |
-| `timeloop.json: 'every_hours' must be…` | Use a whole number from 1 to 24, for example `{ "every_hours": 6 }`. |
+| `timeloop.json: …` error | Use `{ "every_hours": 6 }` (1–24) and/or `{ "at": ["06:00", "18:00"], "timezone": "Asia/Colombo" }`. The error message names the bad key, time or timezone. |
 | `invalid JSON` on startup | Fix the syntax in `timeloop.json`. |
 | A repo is not mirrored | It is unchecked or missing in `repos.md`, or excluded by `INCLUDE_FORKS` / `INCLUDE_ARCHIVED`. |
-| Scheduled run exits with "not due" | Normal: this hour is not a multiple of `every_hours`. |
+| Scheduled run exits with "not due" | Normal: this hour is not one of your `at` hours and not a multiple of `every_hours` (in your `timezone`). |
 | A new repo is not mirrored | Merge the setup PR that adds it (and keep it `[x]`). |
 | `GitLab token rejected (401)` | Use a **classic** PAT with `api` + `write_repository`, and make sure it hasn't expired. |
 | `GitLab group '…' not found` | Set the `GITLAB_GROUP` variable to your top-level group path. The error lists the groups your token can access. |
@@ -331,7 +347,7 @@ Change its line in `repos.md` to `[ ]` and merge. Its existing GitLab copy is le
 You do not have to do anything: at the next due tick `setup` opens a PR that lists it. Merge it to start mirroring.
 
 **How do I change how often it syncs?**
-Edit `every_hours` in `timeloop.json`.
+Edit `timeloop.json`: use `at` for fixed times (e.g. `["06:00", "18:00"]` with your `timezone`) or `every_hours` for a regular interval.
 
 **Can I mirror to a self-hosted GitLab?**
 Yes. Set the `GITLAB_URL` variable.
@@ -353,7 +369,7 @@ mirror-hub/
 │   ├── setup.py              # timeloop gate + creates/extends repos.md
 │   └── mirror.py             # the mirror engine (stdlib + git only)
 ├── repos.md                  # your checklist (created and extended by setup PRs)
-├── timeloop.json             # hours between syncs
+├── timeloop.json             # sync schedule (fixed times and/or every N hours)
 ├── LICENSE
 └── README.md
 ```

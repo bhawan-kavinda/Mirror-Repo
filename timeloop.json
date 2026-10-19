@@ -1,3 +1,4 @@
 {
-  "every_hours": 6
+  "at": ["06:00", "18:00"],
+  "timezone": "Asia/Colombo"
 }

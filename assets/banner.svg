@@ -1,130 +1,226 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400" role="img" aria-labelledby="bt bd" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo0ZGMwOWM5MC1kZWYyLTRjOTYtOTY0OC1iMjkyYzE0ZGJiNjMAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaLLOHJ2b3NeuQ67WvcfSYHMAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDozODY3ZTNlMy0xNWU5LTRjMDQtYmUzNS1jYTg5YzQ5ZDA4MzlscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNogK0TUkky33zOBLyQ5Lh4GQAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggthkLIkccoGdRHZYgK8asZoAY6eGgEe07cWuyO5NF7bakZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaI17D2DS7Pfkqdhftr0nsFwAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCACgrKpMsagmvRgQoGR1Wkp6+q2KXB9pXpMQwryZ2kAgGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBi7Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjRkYzA5YzkwLWRlZjItNGM5Ni05NjQ4LWIyOTJjMTRkYmI2My9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOmU2ZWJkMTBkLWU1ZDUtNDQ4YS04MGNlLWZiZDIyZDY1MmNkMHJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCC2GQsiRxygZ1EdliArxqxmgBjp4aAR7Ttxa7I7k0XttqJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggBIYEufBb9O8rDFXZqlNqajhGpSYDsZmQMJBH5ms3tI+iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgguMgfR/aaN/eGF9txIHLx0zTtyxfE+fEmGE5Zwml9rCh0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQK0nv1MOL26p9R6a/A4mjDEkx3X9XAwvr3b9Z5PZMczDsidvukISd4RMBvFVd0iKqo4hSwXC+trErgydIIMF7U0=</c2pa:manifest></metadata>
-  <title id="bt">Mirror-Hub</title>
-  <desc id="bd">mirror-hub mirrors the GitHub repositories you choose to GitLab on a schedule you control. Repo cards on the left are reflected through a glass mirror to the right.</desc>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400" role="img" aria-labelledby="bt bd" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTo3NzgyODdiYS1iYjhhLTQ2ODAtOTQyYy0zY2JmNzVhNTEwZTUAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaJiM9AO+YKQMG3ksBD5o+d0AAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpkMGU5ZGIzYS00NDAwLTRiYTUtYjExZi03MzVhMGYzOGNiYThscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNoMg13D1IVIHMEkIYXEdICNAAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggECzk/l95m/ZZ+j12doKYQFeOcJNihINWOa07OTGnNGqkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaHdGBgO+bVoQw/pTmMYXdQQAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCCtOe912Ag1dOiLNmRRNvmoM706VSCbKw3pVs3XXBdT02RuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBi7Zmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjc3ODI4N2JhLWJiOGEtNDY4MC05NDJjLTNjYmY3NWE1MTBlNS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjU4ZTc3M2MwLTE0NjctNDFmZC05NjgzLWE0N2JlODgzMjJjZnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCAQLOT+X3mb9ln6PXZ2gphAV45wk2KEg1Y5rTs5Mac0aqJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggBpPOa6jTNJ1b0Y4lNfHTEeSxCkmH6gMV+Xo5IfpDEcmiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggqWQ4Kl+ZJ7xKdYTjDFzi/cFQE9fuWH36BaeeEYS9Tml0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQCgpVmxbOXsZASPxNZr+jEJLuzmRD7ppPDusCYtrAvGI6k7vpTlHfRDDCiv9OuAN58j3JecXsHotMr3l9YKyqQ0=</c2pa:manifest></metadata>
+  <title id="bt">Mirror Hub</title>
+  <desc id="bd">Mirror Hub automatically mirrors the GitHub repositories you choose to GitLab, on a schedule you set. Selected repos on the GitHub side are reflected through a glass mirror to the GitLab side.</desc>
 
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#070b18"/>
-      <stop offset="0.55" stop-color="#121238"/>
-      <stop offset="1" stop-color="#2a1236"/>
+      <stop offset="0" stop-color="#090c1b"/>
+      <stop offset="0.55" stop-color="#131233"/>
+      <stop offset="1" stop-color="#211234"/>
     </linearGradient>
-    <radialGradient id="glowL" cx="0.12" cy="0.2" r="0.55">
-      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.28"/>
-      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    <radialGradient id="glowL" cx="0.18" cy="0.25" r="0.5">
+      <stop offset="0" stop-color="#8b7cff" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#8b7cff" stop-opacity="0"/>
     </radialGradient>
-    <radialGradient id="glowR" cx="0.9" cy="0.85" r="0.5">
-      <stop offset="0" stop-color="#fb923c" stop-opacity="0.30"/>
-      <stop offset="1" stop-color="#fb923c" stop-opacity="0"/>
+    <radialGradient id="glowR" cx="0.88" cy="0.8" r="0.45">
+      <stop offset="0" stop-color="#ff8a3d" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#ff8a3d" stop-opacity="0"/>
     </radialGradient>
-    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#67e8f9"/>
-      <stop offset="0.55" stop-color="#a78bfa"/>
-      <stop offset="1" stop-color="#fdba74"/>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path d="M32 0H0V32" fill="none" stroke="#ffffff" stroke-opacity="0.045" stroke-width="1"/>
+    </pattern>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8b7cff"/>
+      <stop offset="1" stop-color="#ff8a3d"/>
+    </linearGradient>
+    <linearGradient id="title" gradientUnits="userSpaceOnUse" x1="78" y1="0" x2="520" y2="0">
+      <stop offset="0" stop-color="#e4e0ff"/>
+      <stop offset="0.5" stop-color="#b3a8ff"/>
+      <stop offset="1" stop-color="#ffab74"/>
+    </linearGradient>
+    <linearGradient id="cardV" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8b7cff" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#8b7cff" stop-opacity="0.07"/>
+    </linearGradient>
+    <linearGradient id="cardO" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#ff8a3d" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#ff8a3d" stop-opacity="0.07"/>
     </linearGradient>
     <linearGradient id="glass" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.05"/>
-      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.38"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0.05"/>
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.06"/>
     </linearGradient>
     <linearGradient id="sweep" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.9"/>
       <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <linearGradient id="cardL" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#22d3ee" stop-opacity="0.06"/>
+    <linearGradient id="mirrorGlow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#8b7cff"/>
+      <stop offset="1" stop-color="#ff8a3d"/>
     </linearGradient>
-    <linearGradient id="cardR" x1="1" y1="0" x2="0" y2="0">
-      <stop offset="0" stop-color="#fb923c" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#fb923c" stop-opacity="0.06"/>
-    </linearGradient>
-    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.1" fill="#ffffff" fill-opacity="0.07"/>
-    </pattern>
     <clipPath id="round"><rect width="1280" height="400" rx="26"/></clipPath>
-    <clipPath id="mirrorClip"><rect x="950" y="52" width="20" height="262" rx="10"/></clipPath>
-    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="6"/>
+    <clipPath id="mirrorClip"><rect x="952" y="56" width="16" height="266" rx="8"/></clipPath>
+    <filter id="blur" x="-150%" y="-10%" width="400%" height="120%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <filter id="dotGlow" x="-200%" y="-200%" width="500%" height="500%">
+      <feGaussianBlur stdDeviation="3"/>
     </filter>
   </defs>
 
   <style>
     .sans { font-family: 'Segoe UI', Inter, system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif; }
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace; }
-    .sweep { animation: slide 4.5s ease-in-out infinite; }
-    @keyframes slide { 0% { transform: translateY(-140px); } 100% { transform: translateY(330px); } }
-    .pulse { animation: pulse 2.6s ease-in-out infinite; transform-box: fill-box; transform-origin: center; }
-    @keyframes pulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+    .sweep { animation: slide 4.8s ease-in-out infinite; }
+    @keyframes slide { 0% { transform: translateY(-130px); } 100% { transform: translateY(290px); } }
+    .pulse { animation: pulse 2.6s ease-in-out infinite; }
+    @keyframes pulse { 0%,100% { opacity: .45; } 50% { opacity: 1; } }
     @media (prefers-reduced-motion: reduce) { .sweep, .pulse { animation: none; } }
   </style>
 
   <g clip-path="url(#round)">
     <!-- background -->
     <rect width="1280" height="400" fill="url(#bg)"/>
-    <rect width="1280" height="400" fill="url(#dots)"/>
+    <rect width="1280" height="400" fill="url(#grid)"/>
     <rect width="1280" height="400" fill="url(#glowL)"/>
     <rect width="1280" height="400" fill="url(#glowR)"/>
-    <rect x="1" y="1" width="1278" height="398" rx="25" fill="none" stroke="#ffffff" stroke-opacity="0.10" stroke-width="2"/>
+    <rect x="1" y="1" width="1278" height="398" rx="25" fill="none" stroke="url(#rim)" stroke-opacity="0.35" stroke-width="2"/>
 
-    <!-- left: text block -->
-    <circle class="pulse" cx="76" cy="92" r="5" fill="#67e8f9"/>
-    <text class="sans" x="94" y="98" font-size="15" font-weight="700" letter-spacing="4" fill="#67e8f9">GITHUB  →  GITLAB</text>
+    <!-- ============ LEFT: brand + text ============ -->
+    <!-- logo mark -->
+    <g transform="translate(76 62) scale(0.22)">
+      <rect x="8" y="8" width="240" height="240" rx="56" fill="#0b0e1f" fill-opacity="0.9"/>
+      <rect x="8" y="8" width="240" height="240" rx="56" fill="none" stroke="url(#rim)" stroke-width="6"/>
+      <rect x="126" y="36" width="4" height="184" rx="2" fill="#ffffff" fill-opacity="0.8"/>
+      <g stroke="#8b7cff" stroke-width="10" stroke-linecap="round" fill="none">
+        <path d="M88 64 V192"/><path d="M88 104 C88 130 56 122 56 148"/>
+      </g>
+      <g fill="#0b0e1f" stroke="#8b7cff" stroke-width="10">
+        <circle cx="88" cy="64" r="13"/><circle cx="88" cy="128" r="13"/><circle cx="88" cy="192" r="13"/><circle cx="56" cy="148" r="11"/>
+      </g>
+      <g stroke="#ff8a3d" stroke-width="10" stroke-linecap="round" fill="none">
+        <path d="M168 64 V192"/><path d="M168 104 C168 130 200 122 200 148"/>
+      </g>
+      <g fill="#0b0e1f" stroke="#ff8a3d" stroke-width="10">
+        <circle cx="168" cy="64" r="13"/><circle cx="168" cy="128" r="13"/><circle cx="168" cy="192" r="13"/><circle cx="200" cy="148" r="11"/>
+      </g>
+    </g>
+    <text class="sans" x="142" y="94" font-size="17" font-weight="600" letter-spacing="0.6" fill="#b9b2ff">Git backup on autopilot</text>
 
-    <text class="sans" x="68" y="206" font-size="96" font-weight="800" letter-spacing="-3" fill="url(#title)">mirror-hub</text>
+    <!-- title -->
+    <text class="sans" x="74" y="196" font-size="88" font-weight="800" letter-spacing="-2.5" fill="url(#title)">Mirror Hub</text>
 
-    <text class="sans" x="72" y="258" font-size="27" font-weight="400" fill="#c7cff0">Your repos, mirrored on your schedule.</text>
-    <text class="sans" x="72" y="292" font-size="19" font-weight="400" fill="#8d97c9">Tick the ones you want. New repos arrive as a pull request.</text>
+    <!-- tagline -->
+    <text class="sans" x="78" y="244" font-size="29" font-weight="500" fill="#dde1fa">Automatic GitHub to GitLab mirroring</text>
+    <text class="sans" x="78" y="280" font-size="18.5" fill="#8f98c8">Pick your repos, set a schedule, let GitHub Actions do the rest.</text>
 
-    <g class="mono" font-size="15" font-weight="600" text-anchor="middle">
-      <rect x="72" y="320" width="176" height="36" rx="18" fill="#ffffff" fill-opacity="0.07" stroke="#67e8f9" stroke-opacity="0.45"/>
-      <text x="160" y="343" fill="#a5f3fc">repos.md ☑</text>
-      <rect x="260" y="320" width="164" height="36" rx="18" fill="#ffffff" fill-opacity="0.07" stroke="#a78bfa" stroke-opacity="0.5"/>
-      <text x="342" y="343" fill="#ddd6fe">timeloop.json</text>
-      <rect x="436" y="320" width="176" height="36" rx="18" fill="#ffffff" fill-opacity="0.07" stroke="#fdba74" stroke-opacity="0.5"/>
-      <text x="524" y="343" fill="#fed7aa">GitHub Actions</text>
+    <!-- chips -->
+    <g class="mono" font-size="14" font-weight="600">
+      <rect x="78" y="312" width="114" height="36" rx="18" fill="#ffffff" fill-opacity="0.06" stroke="#8b7cff" stroke-opacity="0.6"/>
+      <circle cx="98" cy="330" r="4" fill="#8b7cff"/>
+      <text x="110" y="335" fill="#d9d4ff">repos.md</text>
+
+      <rect x="204" y="312" width="154" height="36" rx="18" fill="#ffffff" fill-opacity="0.06" stroke="#c4b5fd" stroke-opacity="0.5"/>
+      <circle cx="224" cy="330" r="4" fill="#c4b5fd"/>
+      <text x="236" y="335" fill="#e9e5ff">timeloop.json</text>
+
+      <rect x="370" y="312" width="164" height="36" rx="18" fill="#ffffff" fill-opacity="0.06" stroke="#ff8a3d" stroke-opacity="0.6"/>
+      <circle cx="390" cy="330" r="4" fill="#ff8a3d"/>
+      <text x="402" y="335" fill="#ffe0c7">GitHub Actions</text>
     </g>
 
-    <!-- right: mirror illustration -->
-    <text class="sans" x="838" y="76" font-size="14" font-weight="700" letter-spacing="3" text-anchor="middle" fill="#67e8f9">GITHUB</text>
-    <text class="sans" x="1082" y="76" font-size="14" font-weight="700" letter-spacing="3" text-anchor="middle" fill="#fdba74">GITLAB</text>
+    <!-- ============ RIGHT: the mirror ============ -->
+    <text class="sans" x="822" y="78" font-size="15" font-weight="700" letter-spacing="0.5" text-anchor="middle" fill="#b9b2ff">GitHub</text>
+    <text class="sans" x="1098" y="78" font-size="15" font-weight="700" letter-spacing="0.5" text-anchor="middle" fill="#ffb98a">GitLab</text>
 
     <!-- mirror glass -->
-    <rect x="950" y="52" width="20" height="262" rx="10" fill="#a78bfa" fill-opacity="0.35" filter="url(#soft)"/>
-    <rect x="950" y="52" width="20" height="262" rx="10" fill="url(#glass)" stroke="#ffffff" stroke-opacity="0.45"/>
+    <rect x="952" y="56" width="16" height="266" rx="8" fill="url(#mirrorGlow)" fill-opacity="0.55" filter="url(#blur)"/>
+    <rect x="952" y="56" width="16" height="266" rx="8" fill="url(#glass)" stroke="#ffffff" stroke-opacity="0.5"/>
     <g clip-path="url(#mirrorClip)">
-      <rect class="sweep" x="950" y="52" width="20" height="120" fill="url(#sweep)"/>
+      <rect class="sweep" x="952" y="56" width="16" height="110" fill="url(#sweep)"/>
     </g>
 
-    <!-- row 1: selected -->
-    <rect x="758" y="100" width="170" height="54" rx="12" fill="url(#cardL)" stroke="#22d3ee" stroke-opacity="0.7"/>
-    <text class="mono" x="778" y="133" font-size="17" font-weight="600" fill="#cffafe">[x] api</text>
-    <rect x="992" y="100" width="170" height="54" rx="12" fill="url(#cardR)" stroke="#fb923c" stroke-opacity="0.7"/>
-    <text class="mono" x="1012" y="133" font-size="17" font-weight="600" fill="#ffedd5">[x] api</text>
+    <!-- row 1 -->
+    <g>
+      <rect x="722" y="102" width="200" height="56" rx="14" fill="url(#cardV)" stroke="#8b7cff" stroke-opacity="0.75"/>
+      <g stroke="#b9b2ff" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M744 118 V138"/><path d="M744 124 C744 130 752 128 752 134"/>
+      </g>
+      <g fill="#131233" stroke="#b9b2ff" stroke-width="2"><circle cx="744" cy="117" r="3.2"/><circle cx="744" cy="139" r="3.2"/><circle cx="752" cy="135" r="3.2"/></g>
+      <text class="mono" x="768" y="127" font-size="17" font-weight="700" fill="#ece9ff">api</text>
+      <text class="sans" x="768" y="146" font-size="12" fill="#9d96d8">Private</text>
+      <circle cx="898" cy="130" r="10" fill="#8b7cff"/>
+      <path d="M893 130.5 L896.5 134 L903 126.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- row 2: selected -->
-    <rect x="758" y="176" width="170" height="54" rx="12" fill="url(#cardL)" stroke="#22d3ee" stroke-opacity="0.7"/>
-    <text class="mono" x="778" y="209" font-size="17" font-weight="600" fill="#cffafe">[x] website</text>
-    <rect x="992" y="176" width="170" height="54" rx="12" fill="url(#cardR)" stroke="#fb923c" stroke-opacity="0.7"/>
-    <text class="mono" x="1012" y="209" font-size="17" font-weight="600" fill="#ffedd5">[x] website</text>
+      <rect x="998" y="102" width="200" height="56" rx="14" fill="url(#cardO)" stroke="#ff8a3d" stroke-opacity="0.75"/>
+      <g stroke="#ffb98a" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M1020 118 V138"/><path d="M1020 124 C1020 130 1028 128 1028 134"/>
+      </g>
+      <g fill="#1a1233" stroke="#ffb98a" stroke-width="2"><circle cx="1020" cy="117" r="3.2"/><circle cx="1020" cy="139" r="3.2"/><circle cx="1028" cy="135" r="3.2"/></g>
+      <text class="mono" x="1044" y="127" font-size="17" font-weight="700" fill="#fff0e3">api</text>
+      <text class="sans" x="1044" y="146" font-size="12" fill="#e0a678">Mirrored copy</text>
+      <circle cx="1174" cy="130" r="10" fill="#ff8a3d"/>
+      <path d="M1169 130.5 L1172.5 134 L1179 126.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
 
-    <!-- row 3: not selected -->
-    <rect x="758" y="252" width="170" height="54" rx="12" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.22" stroke-dasharray="5 5"/>
-    <text class="mono" x="778" y="285" font-size="17" fill="#7f89b8">[ ] old-test</text>
-    <rect x="992" y="252" width="170" height="54" rx="12" fill="none" stroke="#ffffff" stroke-opacity="0.12" stroke-dasharray="3 7"/>
-    <text class="sans" x="1077" y="284" font-size="14" font-style="italic" text-anchor="middle" fill="#6b75a6">not selected</text>
+    <!-- row 2 -->
+    <g>
+      <rect x="722" y="178" width="200" height="56" rx="14" fill="url(#cardV)" stroke="#8b7cff" stroke-opacity="0.75"/>
+      <g stroke="#b9b2ff" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M744 194 V214"/><path d="M744 200 C744 206 752 204 752 210"/>
+      </g>
+      <g fill="#131233" stroke="#b9b2ff" stroke-width="2"><circle cx="744" cy="193" r="3.2"/><circle cx="744" cy="215" r="3.2"/><circle cx="752" cy="211" r="3.2"/></g>
+      <text class="mono" x="768" y="203" font-size="17" font-weight="700" fill="#ece9ff">website</text>
+      <text class="sans" x="768" y="222" font-size="12" fill="#9d96d8">Public</text>
+      <circle cx="898" cy="206" r="10" fill="#8b7cff"/>
+      <path d="M893 206.5 L896.5 210 L903 202.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- flow dots crossing the mirror -->
-    <circle r="4.5" fill="#ffffff">
-      <animateMotion dur="2.4s" repeatCount="indefinite" path="M930,127 L990,127"/>
-      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" repeatCount="indefinite"/>
-    </circle>
-    <circle r="4.5" fill="#ffffff">
-      <animateMotion dur="2.4s" begin="0.8s" repeatCount="indefinite" path="M930,203 L990,203"/>
-      <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="0.8s" repeatCount="indefinite"/>
-    </circle>
+      <rect x="998" y="178" width="200" height="56" rx="14" fill="url(#cardO)" stroke="#ff8a3d" stroke-opacity="0.75"/>
+      <g stroke="#ffb98a" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M1020 194 V214"/><path d="M1020 200 C1020 206 1028 204 1028 210"/>
+      </g>
+      <g fill="#1a1233" stroke="#ffb98a" stroke-width="2"><circle cx="1020" cy="193" r="3.2"/><circle cx="1020" cy="215" r="3.2"/><circle cx="1028" cy="211" r="3.2"/></g>
+      <text class="mono" x="1044" y="203" font-size="17" font-weight="700" fill="#fff0e3">website</text>
+      <text class="sans" x="1044" y="222" font-size="12" fill="#e0a678">Mirrored copy</text>
+      <circle cx="1174" cy="206" r="10" fill="#ff8a3d"/>
+      <path d="M1169 206.5 L1172.5 210 L1179 202.5" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
 
-    <!-- caption -->
-    <text class="sans" x="960" y="344" font-size="13" letter-spacing="2" text-anchor="middle" fill="#8d97c9">GitLab always equals GitHub</text>
+    <!-- row 3 : not selected -->
+    <g>
+      <rect x="722" y="254" width="200" height="56" rx="14" fill="#ffffff" fill-opacity="0.03" stroke="#ffffff" stroke-opacity="0.25" stroke-dasharray="5 5"/>
+      <g stroke="#6f78a8" stroke-width="2" fill="none" stroke-linecap="round">
+        <path d="M744 270 V290"/><path d="M744 276 C744 282 752 280 752 286"/>
+      </g>
+      <g fill="#131233" stroke="#6f78a8" stroke-width="2"><circle cx="744" cy="269" r="3.2"/><circle cx="744" cy="291" r="3.2"/><circle cx="752" cy="287" r="3.2"/></g>
+      <text class="mono" x="768" y="279" font-size="17" font-weight="600" fill="#7f89b8">old-test</text>
+      <text class="sans" x="768" y="298" font-size="12" fill="#5f6894">Not selected</text>
+      <circle cx="898" cy="282" r="10" fill="none" stroke="#6f78a8" stroke-opacity="0.8" stroke-dasharray="3 3"/>
+
+      <rect x="998" y="254" width="200" height="56" rx="14" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-dasharray="3 7"/>
+      <text class="sans" x="1098" y="287" font-size="14" font-style="italic" text-anchor="middle" fill="#6b75a6">Skipped</text>
+    </g>
+
+    <!-- data packets crossing the mirror -->
+    <g>
+      <circle r="9" fill="#ffffff" fill-opacity="0.35" filter="url(#dotGlow)">
+        <animateMotion dur="2.4s" repeatCount="indefinite" path="M922,130 L998,130"/>
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="4.5" fill="#ffffff">
+        <animateMotion dur="2.4s" repeatCount="indefinite" path="M922,130 L998,130"/>
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="9" fill="#ffffff" fill-opacity="0.35" filter="url(#dotGlow)">
+        <animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M922,206 L998,206"/>
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
+      </circle>
+      <circle r="4.5" fill="#ffffff">
+        <animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M922,206 L998,206"/>
+        <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.15;0.8;1" dur="2.4s" begin="1.2s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+
+    <!-- schedule badge -->
+    <g>
+      <rect x="856" y="338" width="208" height="32" rx="16" fill="#0b0e1f" fill-opacity="0.8" stroke="url(#rim)" stroke-width="1.5"/>
+      <g transform="translate(877 354)" fill="none" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round">
+        <circle cx="0" cy="0" r="7.5"/><path d="M0 -4 V0 L3 2"/>
+      </g>
+      <text class="sans" x="893" y="359" font-size="14" font-weight="600" fill="#e6e8fb">On your schedule</text>
+      <circle class="pulse" cx="1048" cy="354" r="3.5" fill="#4ade80"/>
+    </g>
   </g>
 </svg>
