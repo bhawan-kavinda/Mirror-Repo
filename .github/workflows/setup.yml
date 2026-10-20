@@ -3,7 +3,11 @@ name: setup
 on:
   workflow_dispatch:
   schedule:
-    - cron: "17 * * * *" # hourly tick; timeloop.json decides which ticks actually run
+    # Hourly tick; timeloop.json decides which ticks actually run.
+    # Minute 45 UTC = :15 in UTC+5:30 (Asia/Colombo), so a tick has ~45 min of delay
+    # tolerance before the local hour rolls over (GitHub cron is often 15-60 min late).
+    # If you change the timezone, pick a minute that lands around :10-:20 local time.
+    - cron: "45 * * * *"
 
 # needs: Settings > Actions > General > "Allow GitHub Actions to create and approve pull requests"
 permissions:
@@ -79,7 +83,8 @@ jobs:
   # runs only after setup passed and the timeloop said it is time
   mirror:
     needs: setup
-    if: needs.setup.outputs.due == 'true'
+    # !cancelled() so a failed setup step (PR creation, API hiccup) never blocks the mirror
+    if: ${{ !cancelled() && needs.setup.outputs.due == 'true' }}
     permissions:
       contents: read
     uses: ./.github/workflows/mirror.yml
