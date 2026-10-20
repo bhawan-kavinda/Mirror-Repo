@@ -109,7 +109,9 @@ def is_due(now=None):
     """Scheduled runs only. Due when the current hour (in the configured timezone)
     is a multiple of every_hours, or is one of the 'at' hours.
     Manual and push runs are always due. Missing file = every tick is due.
-    Only the hour matters: the run happens at the hourly tick inside that hour."""
+    Only the hour matters: the run happens at the hourly tick inside that hour.
+    The tick's local minute must sit well inside the hour (see the cron in setup.yml),
+    otherwise a delayed scheduled run slips into the next hour and the slot is missed."""
     if now is None and os.environ.get("GITHUB_EVENT_NAME") != "schedule":
         return True
     cfg = read_timeloop()
@@ -123,7 +125,9 @@ def is_due(now=None):
         rules.append(f"every {every}h")
     if at_hours:
         rules.append("at " + ", ".join(f"{h:02d}:00" for h in sorted(at_hours)))
-    print(f"timeloop: {' + '.join(rules)} ({tz_name}); local time now {local:%H:%M}, hour {hour}")
+    utc_now = local.astimezone(timezone.utc)
+    print(f"timeloop: {' + '.join(rules)} ({tz_name}); local time now {local:%H:%M}, "
+          f"hour {hour} (UTC {utc_now:%H:%M})")
     return bool((every and hour % every == 0) or hour in at_hours)
 
 
